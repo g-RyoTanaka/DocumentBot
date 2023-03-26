@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package document_search;
+
+message SearchContentResult{
+    string message = 1;
+}
+
+message SearchNumResult{
+    int32 status = 2;
+    string msg = 3;
+}
+
+//検索クエリ
+message SearchQuery{
+    int32 status = 1;
+    string msg = 2;
+}
+
+// サービスとRPCメソッド定義
+service DocumentSearchService{
+
+    //クエリ検索とその検索結果
+    rpc SearchContents(SearchQuery) returns (SearchContentResult) {};
+
+    //クエリ検索とその検索件数結果
+    rpc SearchNumber(SearchQuery) returns (SearchNumResult) {};
+}
